@@ -9,6 +9,7 @@
 }
 body {
   background-color: rgb(226, 220, 220);
+  padding-bottom: 50px;
 }
 
 input {
@@ -64,7 +65,7 @@ li {
 /* gallery List */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(300px, 400px));
   grid-gap: 20px;
   padding: 0;
   margin: 0;

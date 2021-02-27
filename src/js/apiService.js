@@ -1,3 +1,5 @@
+import alert from './pnotify';
+
 const API = `20446942-67f6e7c7c658c080defdaf824`;
 
 const apiService = {
@@ -17,10 +19,17 @@ const apiService = {
     return fetch(url, options)
       .then(response => response.json())
       .then(({ hits }) => {
-        console.log(hits);
+        // console.log(hits);
+        if (hits.length === 0) {
+          this.notification();
+        }
         this.page += 1;
         return hits;
       });
+  },
+
+  notification() {
+    alert({ text: 'NOT FOUND! TRY AGAIN' });
   },
 
   resetPage() {

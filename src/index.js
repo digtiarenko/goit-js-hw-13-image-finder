@@ -3,6 +3,7 @@ import './templates/result.hbs';
 import refs from './js/refs';
 import apiService from './js/apiService';
 import updateGalleryMarkup from './js/updateMarkUp';
+import modal from './js/modal';
 
 refs.searchForm.addEventListener('submit', event => {
   event.preventDefault();
@@ -16,6 +17,7 @@ refs.searchForm.addEventListener('submit', event => {
 
   apiService.apiService().then(hits => {
     updateGalleryMarkup(hits);
+    console.log(hits);
     refs.loadMoreBtn.classList.remove('is-hidden');
   });
 });
@@ -23,9 +25,18 @@ refs.searchForm.addEventListener('submit', event => {
 refs.loadMoreBtn.addEventListener('click', () => {
   apiService.apiService().then(hits => {
     updateGalleryMarkup(hits);
+
     window.scrollBy({
       top: 1000,
       behavior: 'smooth',
     });
   });
+});
+
+// Модалка
+
+refs.galleryContainer.addEventListener('click', () => {
+  if (event.target.nodeName === 'IMG') {
+    modal();
+  }
 });
