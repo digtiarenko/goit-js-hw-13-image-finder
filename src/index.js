@@ -18,7 +18,9 @@ refs.searchForm.addEventListener('submit', event => {
   apiService.apiService().then(hits => {
     updateGalleryMarkup(hits);
     console.log(hits);
-    refs.loadMoreBtn.classList.remove('is-hidden');
+    if (hits.length !== 0) {
+      refs.loadMoreBtn.classList.remove('is-hidden');
+    }
   });
 });
 
